@@ -14,7 +14,6 @@ public class YeşilMarket {
 	public static List <Double> sepetKg = new ArrayList<>();
 	public static List <Double> sepetFiyatlar = new ArrayList<>();
 	
-	
 		
 	public static void main(String[] args) {
 		
