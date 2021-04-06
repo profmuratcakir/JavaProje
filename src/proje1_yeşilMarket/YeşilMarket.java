@@ -48,14 +48,24 @@ public class YeşilMarket {
 		
 		
 		fiyatlar.addAll(Arrays.asList(2.1, 3.2, 1.5, 2.3, 3.1, 1.2, 1.9, 6.1, 4.3, 2.7, 0.5));	
+		String devam ;
+		double toplamFiyat = 0.0;
 		
-		ürünListele();
-		System.out.println("Ürününüzü numaraya göre seçiniz:");
-		int ürünNo = scan.nextInt();
-		System.out.println("Ağırlık giriniz:");
-		double kg = scan.nextDouble();
-		sepeteEkle(ürünNo, kg);
+		do {
+			ürünListele();
+			System.out.println("Ürününüzü numaraya göre seçiniz:");
+			int ürünNo = scan.nextInt();
+			System.out.println("Ağırlık giriniz:");
+			double kg = scan.nextDouble();
+			sepeteEkle(ürünNo, kg);
+			toplamFiyat = sepeteYazdır();
+			System.out.println("Alış verişe deam etmek istermisiniz:");
+			devam = scan.next();
+		}while(devam.equalsIgnoreCase("e"));
 		
+		ödeme(toplamFiyat);
+		
+	
 	}
 	
 	public static void ürünListele() {
@@ -71,8 +81,54 @@ public class YeşilMarket {
 		sepetÜrünler.add(ürünler.get(ürünNo));
 		sepetKg.add(kg);
 		sepetFiyatlar.add(fiyatlar.get(ürünNo) * kg);
-		
 	}
+	
+	public static double sepeteYazdır() {
+		
+		double fiyatToplamı = 0.0;
+		double kgToplamı = 0.0;
+		
+		System.out.println("ürün adı \tKG \tFiyatı");
+		System.out.println("=================================");
+		for(int i=0 ; i < sepetÜrünler.size() ; i++ ) {
+			System.out.println(sepetÜrünler.get(i) + "\t \t" + sepetKg.get(i) + "\t" + sepetFiyatlar.get(i));
+			fiyatToplamı +=  sepetFiyatlar.get(i);
+			kgToplamı += sepetKg.get(i);
+		}
+		
+		System.out.println("=================================");
+		System.out.println("\t TOPLAM:" + kgToplamı + "\t" + fiyatToplamı);
+		
+		return fiyatToplamı;
+	}
+	
+	public static void ödeme(double toplamFiyat){
+		Scanner scan  = new Scanner(System.in);
+		
+		System.out.println("***********************************");
+		System.out.println("************* ÖDEME ***************");
+		System.out.printf("ÖDENECEK TOPLAM FİYAT: %.2f", toplamFiyat);
+		double nakit = 0.0;
+		do {
+			System.out.print("Lütfen Nakit Giriniz:");
+			nakit += scan.nextDouble();
+			if(nakit < toplamFiyat) {
+				System.out.println("Girilen Rakam yetersiz.");
+				System.out.println((toplamFiyat - nakit) + " TL daha yatırmanız gerekmektedir.");
+			}
+		}while(nakit < toplamFiyat);
+		
+		double paraÜstü = nakit - toplamFiyat;
+		if (paraÜstü > 0) {
+			System.out.println("PARA ÜSTÜ :" + paraÜstü);
+		}
+		
+		System.out.println("YİNE BEKLERİZ");
+		
+	
+	}
+	
+	
 	
 	
 	
