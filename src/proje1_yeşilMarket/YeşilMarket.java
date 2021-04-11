@@ -58,7 +58,7 @@ public class YeşilMarket {
 			System.out.println("Ağırlık giriniz:");
 			double kg = scan.nextDouble();
 			sepeteEkle(ürünNo, kg);
-			toplamFiyat = sepeteYazdır();
+			toplamFiyat = Math.round(sepeteYazdır());
 			System.out.println("Alış verişe deam etmek istermisiniz:");
 			devam = scan.next();
 		}while(devam.equalsIgnoreCase("e"));
@@ -107,7 +107,8 @@ public class YeşilMarket {
 		
 		System.out.println("***********************************");
 		System.out.println("************* ÖDEME ***************");
-		System.out.printf("ÖDENECEK TOPLAM FİYAT: %.2f", toplamFiyat);
+		System.out.println("ÖDENECEK TOPLAM FİYAT:" + toplamFiyat);
+//		System.out.printf("ÖDENECEK TOPLAM FİYAT: %.2f", toplamFiyat);
 		double nakit = 0.0;
 		do {
 			System.out.print("Lütfen Nakit Giriniz:");
