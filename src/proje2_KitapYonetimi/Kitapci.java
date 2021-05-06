@@ -13,7 +13,7 @@ import java.util.Scanner;
 //		3.	Programın başlangıcında Kullanıcıya aşağıdaki gibi bir menü sunulmalıdır.
 //			Kullanıcı programı bitirene kadar işlemlere devam edebilmelidir. 
 //	
-//			========= KİTAP PROGRAMI =============
+//			========= KITAP PROGRAMI =============
 //				1: Kitap ekle 
 //				2: Numara ile kitap sil
 //				3: Tüm kitapları listele
